@@ -7,8 +7,8 @@ TAB=`echo -e "\t"`
 rm -R ../motifAnalysis
 mkdir ../motifAnalysis
 
-fgsetToUse=../byEGString/R5-R2/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1.xls ######
-bgsetToUse=../byEGString/R5-R2/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1bps_union.xls   ##../byEGString/CombinedAnalysis.final.FDRm.DetectedBoth.xls   ######
+fgsetToUse=../byEGString/Alb_mEpiSCLib2-Alb_mESCLib2/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1.xls ######
+bgsetToUse=../byEGString/Alb_mEpiSCLib2-Alb_mESCLib2/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1bps_union.xls   ##../byEGString/CombinedAnalysis.final.FDRm.DetectedBoth.xls   ######
 
 echo "Collecting ID and dPsi from DetectedBoth and FDR>0.05 as base for FG set";
 cuta.py -f ".eventID,@dPsi$" $fgsetToUse  | awk 'FNR>1' | sort +0 -1 > id1.00
@@ -18,11 +18,13 @@ awk '$2<0' id1.00 | cut -f1 > down.sel.00;
 awk '$2>0' id1.00 | cut -f1 > up.sel.00;
 cut -f1 id1.00  > both.sel.00;
 
+head -n 1 ../seq.merged.xls > ../seqHeader.txt
+
 echo "Getting sequence file header";
-selector=`colSelect.py -o, ../scripts/seqHeader.txt ".eventID,.eventType,.locusName,.chr,.strand,.inc/excBound,.inUFSeq-.exDFSeq"`
+selector=`colSelect.py -o, ../seqHeader.txt ".eventID,.eventType,.locusName,.chr,.strand,.inc/excBound,.inUFSeq-.exDFSeq"`
 echo $selector 
 
-cuta.py -f$selector ../scripts/seqHeader.txt > seq.header.00
+cuta.py -f$selector ../seqHeader.txt > seq.header.00
 echo columns selected are 
 cat seq.header.00
 
