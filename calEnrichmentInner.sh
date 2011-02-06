@@ -29,5 +29,5 @@ motifEnrichment.py --headerRow 1 --startRow 2 1m $FgFile .eventType,.locusName,.
 
 echo "motif h from C++ program"
 #./motifEnrichment2 -h -h filenamefg,filenamebg,headerRow1,startRow1,strandCol1,fromCol1,toCol1,N,CGBinInterval,FDRCutOff,pvalueCutOff,topCount,familyFile[.=no],noOverlap[=yes,no],usePSSM[=yes,no],PSSM.nShuffle,PSSM.FDR
-./motifEnrichment2 -h $FgFile $BgFile 1 2 5 7 12 $Nmer $BinIntervalHG $pvalueCutOff $FDRCutOff $outputCutOff . no no 100 0.05 > "$OutputName.hmotif.txt" 2> "$OutputName.hmotif.stderr"
+motifEnrichment2 -h $FgFile $BgFile 1 2 5 7 12 $Nmer $BinIntervalHG $pvalueCutOff $FDRCutOff $outputCutOff . no no 100 0.05 > "$OutputName.hmotif.txt" 2> "$OutputName.hmotif.stderr"
 
