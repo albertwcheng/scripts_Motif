@@ -14,7 +14,7 @@ FDRCutOff=-1.1;
 outputCutOff=11110000;
 
 
-export LD_LIBRARY_PATH=/usr/local/lib
+#export LD_LIBRARY_PATH=/usr/local/lib
 
 
 

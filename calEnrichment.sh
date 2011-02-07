@@ -1,14 +1,14 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH=/usr/local/lib
+#export LD_LIBRARY_PATH=/usr/local/lib
 TAB=`echo -e "\t"`
 
 #if [ 1 -gt 2 ]; then
-rm -R ../motifAnalysis
+rm -Rf ../motifAnalysis
 mkdir ../motifAnalysis
 
-fgsetToUse=../byEGString/Alb_mEpiSCLib2-Alb_mESCLib2/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1.xls ######
-bgsetToUse=../byEGString/Alb_mEpiSCLib2-Alb_mESCLib2/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1bps_union.xls   ##../byEGString/CombinedAnalysis.final.FDRm.DetectedBoth.xls   ######
+fgsetToUse=../byEGString/miPS_Sharif_Boyer-MEF_Sharif_Boyer/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1.xls ######
+bgsetToUse=../byEGString/miPS_Sharif_Boyer-MEF_Sharif_Boyer/CombinedAnalysis.final.FDRm.FDR0.05_dPsi-0.10.1bps_union.xls   ##../byEGString/CombinedAnalysis.final.FDRm.DetectedBoth.xls   ######
 
 echo "Collecting ID and dPsi from DetectedBoth and FDR>0.05 as base for FG set";
 cuta.py -f ".eventID,@dPsi$" $fgsetToUse  | awk 'FNR>1' | sort +0 -1 > id1.00
